@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>SpaceChat</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" type="image/png" href="/static/img/neptune123.png"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <!-- https://cdnjs.com/libraries/stomp.js/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+
+</head>
+<body>
+<div class="container-login100" style="background-image: url('/static/img/space-wallpapers-2560x1600-00028.jpg  ');">
+
+    <div class="container">
+        <!------------------MSG------------------>
+        <div class="msg-header">
+            <div class="msg-header-img">
+                <img src="/static/img/neptune1212.png" alt="Изображение человека ">
+            </div>
+            <div class="active">
+                <h4 th:utext="${username}" id="username"></h4>
+                <h3>SpaceChat</h3>
+            </div>
+            <div class="header-icons">
+                <!--<i class="fa fa-phone" aria-hidden="true"></i>-->
+                <i style="font-size: 20px" class="fa fa-info" id="online-user" aria-hidden="true"></i>
+                <a th:href="@{/logout/${username}}"><i style="font-size: 20px" class="fa fa-sign-out" aria-hidden="true"
+                                           alt-title="Выход из чата"
+                                           id="logout"></i></a>
+            </div>
+        </div>
+        <div class="chat-page">
+            <div class="msg-inbox">
+                <div class="chats">
+                    <div class="msg-page">
+                        <div class="received-chats" th:id="chat-message">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="msg-bottom">
+                <div class="bottom-icons">
+                    <i class="fa fa-smile-circle" aria-hidden="true"></i>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="message" placeholder="Текст сообщения">
+                    <div class="input-group-append" id="b">
+                    <span class="input-group-text" id="sendMessagesButton">
+                        <i id="btn" class="fa fa-paper-plane" aria-hidden="true"></i>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{js/main.js}"></script>
+</html>
